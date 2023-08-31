@@ -18,6 +18,10 @@ import {
   UrlModule,
 } from '@spartacus/core';
 import {
+  InvoicesListComponent,
+  PDFInvoicesComponentsModule,
+} from '@spartacus/pdf-invoices/components';
+import {
   CardModule,
   IconModule,
   KeyboardFocusModule,
@@ -65,6 +69,7 @@ const moduleComponents = [
     AddToCartModule,
     KeyboardFocusModule,
     IconModule,
+    PDFInvoicesComponentsModule, //TODO: remove it and replace with CMS
   ],
   providers: [
     provideDefaultConfig(<CmsConfig | FeaturesConfig>{
@@ -105,6 +110,11 @@ const moduleComponents = [
         },
         AccountOrderDetailsReorderComponent: {
           component: OrderDetailReorderComponent,
+          guards: [AuthGuard],
+        },
+        AccountOrderDetailsPDFInvoicesComponent: {
+          //TODO: replace with CMS dont checkin
+          component: InvoicesListComponent,
           guards: [AuthGuard],
         },
       },
